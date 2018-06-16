@@ -21,12 +21,13 @@
       </v-ons-list-item>
     </v-ons-list>
 
-    <router-link :to="{ name: 'result', params: { items } }"><div style="margin: 10px 0px;text-align: center;"><button style="font-size: 20px;margin: 6px 0;">ガチャぽん！</button></div></router-link>
+    <div style="margin: 10px 0px;text-align: center;"><button style="font-size: 20px;margin: 6px 0;" @click="err(items)">ガチャぽん！</button></div>
 
   </v-ons-page>
 </template>
 
 <script>
+import router from '../router'
 export default {
   name: 'home',
   props: ['lists'],
@@ -43,6 +44,13 @@ export default {
     }
   },
   methods: {
+    err (items) {
+      if (this.items.length === 0) {
+        alert('参加者を追加してください')
+      } else {
+        router.push({ name: 'result', params: { items } })
+      }
+    },
     ItemsPop (index) {
       this.items.splice(index, 1)
     },
