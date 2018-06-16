@@ -56,7 +56,8 @@ export default {
     },
     ItemPush () {
       var inputName = prompt('名前の入力')
-      if (inputName !== '') {
+      if (inputName === null) {
+      } else if (inputName !== '') {
         this.newName = inputName
         this.items.push({
           name: this.newName
